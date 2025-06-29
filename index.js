@@ -48,7 +48,7 @@ bot.command("start", async (ctx) => {
   await sendPhotoOrText(
     ctx,
     images.start,
-    "DEFI Smart Mining\n📱 All you need is a mobile wallet to start smart mining!\n🔐 No transfer required - your USDT will remain in your wallet, 100% safe!\n💡 Easy to use | High yield | Funds under control!",
+    "DEFI Smart Mining\n📱 All you need is a mobile wallet to start smart mining!\n🔐 No transfer required - your USDT/USDC will remain in your wallet, 100% safe!\n💡 Easy to use | High yield | Funds under control!",
     [
       [
         { text: "Join Now", url: "https://example.com/products" },

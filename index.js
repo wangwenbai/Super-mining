@@ -9,7 +9,7 @@ const images = {
   start: "",
   joinNow: "https://i.imgur.com/yUP6USH.jpeg",
   customerSupport: "https://i.imgur.com/yUP6USH.jpeg",
-  howToGetStarted: "",
+  howToGetStarted: "https://i.imgur.com/2v2mFnt.png",
   latestOffers: ""
 };
 

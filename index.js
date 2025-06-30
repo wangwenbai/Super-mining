@@ -9,8 +9,8 @@ const images = {
   start: "",
   joinNow: "https://i.imgur.com/yUP6USH.jpeg",
   customerSupport: "https://i.imgur.com/yUP6USH.jpeg",
-  howToGetStarted: "https://i.imgur.com/2v2mFnt.png",
-  latestOffers: ""
+  howToGetStarted: "",
+  latestOffers: "https://i.imgur.com/2v2mFnt.png"
 };
 
 async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, replyKeyboard = null) {

@@ -7,20 +7,34 @@ const app = express();
 const bot = new Bot(process.env.BOT_TOKEN);
 
 async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, replyKeyboard = null) {
-  const isImageUrl = typeof photoUrl === "string" && photoUrl.match(/^https?:\/\/.*\.(jpg|jpeg|png|webp|gif)$/i);
+  // 过滤掉 URL 为空的按钮
+  const filteredInlineKeyboard = inlineKeyboard
+    ? inlineKeyboard
+        .map(row => row.filter(button => button.url && button.url.trim() !== ""))
+        .filter(row => row.length > 0)
+    : null;
+
+  const isImageUrl =
+    typeof photoUrl === "string" && photoUrl.match(/^https?:\/\/.*\.(jpg|jpeg|png|webp|gif)$/i);
 
   if (isImageUrl) {
     await ctx.replyWithPhoto(photoUrl, {
       caption: text,
       parse_mode: "Markdown",
-      reply_markup: inlineKeyboard ? { inline_keyboard: inlineKeyboard } : undefined,
+      reply_markup: filteredInlineKeyboard ? { inline_keyboard: filteredInlineKeyboard } : undefined,
     });
   } else {
     await ctx.reply(text, {
       parse_mode: "Markdown",
       reply_markup: replyKeyboard
-        ? { keyboard: replyKeyboard.map(row => row.map(btn => ({ text: btn }))), resize_keyboard: true }
-        : inlineKeyboard ? { inline_keyboard: inlineKeyboard } : undefined,
+        ? {
+            keyboard: replyKeyboard.map(row => row.map(btn => ({ text: btn }))),
+            resize_keyboard: true,
+            one_time_keyboard: false,
+          }
+        : filteredInlineKeyboard
+        ? { inline_keyboard: filteredInlineKeyboard }
+        : undefined,
     });
   }
 }
@@ -51,8 +65,8 @@ bot.on("message:text", async (ctx) => {
     await ctx.reply(config.texts.fallback, {
       reply_markup: {
         keyboard: config.replyButtons.map(row => row.map(btn => ({ text: btn }))),
-        resize_keyboard: true
-      }
+        resize_keyboard: true,
+      },
     });
   }
 });
@@ -60,7 +74,9 @@ bot.on("message:text", async (ctx) => {
 bot.start();
 console.log("🤖 Bot is running...");
 
-app.get("/", (_, res) => res.send("Bot is alive!"));
+app.get("/", (_, res) => {
+  res.send("Bot is alive!");
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

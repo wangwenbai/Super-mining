@@ -6,6 +6,7 @@ const config = require("./config");
 const app = express();
 const bot = new Bot(process.env.BOT_TOKEN);
 
+// 工具函数：根据URL过滤内联按钮
 function filterInlineButtons(buttonRows) {
   if (!buttonRows) return null;
   const filtered = buttonRows
@@ -14,8 +15,11 @@ function filterInlineButtons(buttonRows) {
   return filtered.length > 0 ? filtered : null;
 }
 
+// 统一发送文本或图片
 async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, replyKeyboard = null) {
-  const isImageUrl = typeof photoUrl === "string" && photoUrl.match(/^https?:\/\/.*\.(jpg|jpeg|png|webp|gif)$/i);
+  const isImageUrl =
+    typeof photoUrl === "string" &&
+    photoUrl.match(/^https?:\/\/.*\.(jpg|jpeg|png|webp|gif)$/i);
 
   const filteredInline = filterInlineButtons(inlineKeyboard);
 
@@ -30,11 +34,14 @@ async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, reply
       parse_mode: "Markdown",
       reply_markup: replyKeyboard
         ? { keyboard: replyKeyboard.map(row => row.map(btn => ({ text: btn }))), resize_keyboard: true }
-        : filteredInline ? { inline_keyboard: filteredInline } : undefined,
+        : filteredInline
+        ? { inline_keyboard: filteredInline }
+        : undefined,
     });
   }
 }
 
+// /start 命令
 bot.command("start", async (ctx) => {
   await sendPhotoOrText(
     ctx,
@@ -45,11 +52,12 @@ bot.command("start", async (ctx) => {
   );
 });
 
+// 处理快捷按钮文本
 bot.on("message:text", async (ctx) => {
   const text = ctx.message.text.trim();
-  const key = config.buttonToKeyMap[text] || text.toLowerCase();
+  const key = config.buttonToKeyMap[text];
 
-  if (config.texts[key]) {
+  if (key && config.texts[key]) {
     await sendPhotoOrText(
       ctx,
       config.images[key],
@@ -57,22 +65,16 @@ bot.on("message:text", async (ctx) => {
       config.inlineButtons[key] || null
     );
   } else {
-    await ctx.reply(config.texts.fallback, {
-      reply_markup: {
-        keyboard: config.replyButtons.map(row => row.map(btn => ({ text: btn }))),
-        resize_keyboard: true,
-        one_time_keyboard: false
-      }
-    });
+    await ctx.reply(config.texts.fallback);
   }
 });
 
+// 启动 bot
 bot.start();
 console.log("🤖 Bot is running...");
 
+// 简易 Express server（保活用）
 app.get("/", (_, res) => res.send("Bot is alive!"));
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`🌐 Web server running on port ${port}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`🌐 Web server running`);
 });

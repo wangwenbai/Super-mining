@@ -153,7 +153,7 @@ Need help? Just reply here, and we’ll guide you step by step.";
   } else if (text === "Learn about the project") {
     await sendPhotoOrText(
       ctx,
-      images.latestOffers,
+      images.Learn about the project,
       "About the Project\n
 This project provides secure, transparent tools for managing crypto activities.\n
 

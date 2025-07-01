@@ -68,31 +68,31 @@ If you have questions, feel free to ask.
     start: [
       [
         { text: "Join Now", url: "https://example.com/products" },
-        { text: "Customer Support", url: "https://example.com/support" }
+        { text: "Customer Support", url: "" }  // 第二个按钮预留位置，URL空不显示
       ]
     ],
     joinNow: [
       [
         { text: "View Plans", url: "https://example.com/plans" },
-        { text: "FAQ", url: "https://example.com/faq" }
+        { text: "More Info", url: "" }          // 第二个按钮空
       ]
     ],
     customerSupport: [
       [
         { text: "Contact Us", url: "https://t.me/your_support_bot" },
-        { text: "Help Center", url: "https://example.com/help" }
+        { text: "FAQ", url: "" }                // 第二个按钮空
       ]
     ],
     howToGetStarted: [
       [
         { text: "Learn More", url: "https://example.com/how-to" },
-        { text: "Tutorial Videos", url: "https://example.com/tutorials" }
+        { text: "Support", url: "" }            // 第二个按钮空
       ]
     ],
     learnAboutTheProject: [
       [
         { text: "More Information", url: "https://example.com/about" },
-        { text: "Roadmap", url: "https://example.com/roadmap" }
+        { text: "Join Now", url: "" }           // 第二个按钮空
       ]
     ]
   },

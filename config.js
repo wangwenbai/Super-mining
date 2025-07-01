@@ -9,16 +9,58 @@ module.exports = {
   },
   texts: {
     welcome:
-      "DEFI Smart Mining\n📱 All you need is a mobile wallet to start smart mining!\n🔐 No transfer required - your USDT will remain in your wallet, 100% safe!\n💡 Easy to use | High yield | Funds under control!",
+      "Thank you for your interest.
+Here’s what this bot can help you with:
+
+Easy to get started, beginner friendly
+
+100% transparent system
+
+Real-time updates and notifications
+
+Compatible with major crypto wallets
+
+24/7 automated support
+
+Feel free to explore or ask any questions.",
 
     joinNow:
-      "Decentralized mining platform, transparent, open and trustworthy.\nSupports multiple public chains, USDT/USDC stablecoin guarantee.\n✅Own funds, zero lock-up, safe and worry-free.",
+      "Welcome!
+You’ve joined successfully.
+
+This bot helps you:
+
+Get started easily
+
+Access a 100% transparent system
+
+Receive real-time updates
+
+Use major crypto wallets
+
+Enjoy 24/7 automated support
+
+Feel free to explore and reach out if you need any help.",
 
     customerSupport:
-      "🔒 Own wallet, funds are always at hand\n⛏️ Interest is calculated hourly, and funds are credited to the account in real time\n💎 Support USDT/USDC stablecoins\n✅ Transparent dividends on multiple chains",
+      "Customer Support
+Our team is here to help you.
+
+Please share your question or issue, and we’ll assist you as soon as possible.
+
+You can also check the FAQ for quick answers.",
 
     howToGetStartedShort:
-      "🌍 The world's top automated mining network platform\n\nSafe and transparent · Global synchronization · Efficient withdrawal",
+      "How to Get Started
+It’s easy to begin:
+
+Create or connect your account
+
+Follow the setup instructions
+
+Start using all features right away
+
+Need help? Just reply here, and we’ll guide you step by step.",
 
     howToGetStartedLong:
       `In order to ensure the asset security and operational freedom of each user, provides a fast and convenient multi-chain USDT withdrawal mechanism, supporting the following three main on-chain methods:\n\n💸 Supported withdrawal methods:\nBEP20‑USDT (BNB chain) - A small amount of BNB is required in the wallet as a network fee\nERC20‑USDT (Ethereum chain) - ETH is required\nPolygon‑USDT (Polygon chain) - POL is required\n\n🔐 To ensure smooth withdrawal, please prepare enough handling fee tokens for the corresponding chain in advance. This platform does not deduct handling fees.\n\n💡 Withdrawal instructions:\n– Minimum withdrawal amount: 1USDT\n– Only one withdrawal per day\n– The number of withdrawals is reset at 00:00 (Singapore time, GMT+8) every day\n\n✅ Truth and transparency: All withdrawal records can be checked on the chain\n✅ Fast arrival: Automatic processing, completed in 3-9 seconds, and efficient for large amounts\n✅ Global applicability: Supports multiple chains, compatible with mainstream wallets and exchanges\n🎯 Make every asset trustworthy and every withdrawal worth worrying about.`,
@@ -61,6 +103,6 @@ module.exports = {
   replyButtons: [
     ["Join Now", "Customer Support"],
     ["How to get started"],
-    ["Latest Offers"]
+    ["Learn about the projec"]
   ]
 };

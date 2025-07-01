@@ -67,34 +67,34 @@ If you have questions, feel free to ask.
   inlineButtons: {
     start: [
       [
-        { text: "Join Now", url: "" },
-        { text: "Customer Support", url: "" }
+        { text: "Join Now", url: "https://example.com/products" },
+        { text: "Customer Support", url: "https://example.com/support" }
       ]
     ],
     joinNow: [
       [
-        { text: "View Plans", url: "" }
+        { text: "View Plans", url: "https://example.com/plans" }
       ]
     ],
     customerSupport: [
       [
-        { text: "Contact Us", url: "" }
+        { text: "Contact Us", url: "https://t.me/your_support_bot" }
       ]
     ],
     howToGetStarted: [
       [
-        { text: "Learn More", url: "" }
+        { text: "Learn More", url: "https://example.com/how-to" }
       ]
     ],
     learnAboutTheProject: [
       [
-        { text: "More Information", url: "" }
+        { text: "More Information", url: "https://example.com/about" }
       ]
     ]
   },
   replyButtons: [
-    ["joinNow", "customerSupport"],
-    ["howToGetStarted"],
-    ["learnAboutTheProject"]
+    ["Join Now", "Customer Support"],
+    ["How to get started"],
+    ["Learn about the project"]
   ]
 };

@@ -29,27 +29,31 @@ bot.command("start", async (ctx) => {
   await sendPhotoOrText(
     ctx,
     config.images.start,
-    config.texts.welcome,
+    config.texts.start,
     config.inlineButtons.start,
     config.replyButtons
   );
 });
 
 bot.on("message:text", async (ctx) => {
-  const text = ctx.message.text.trim().toLowerCase();
-  const matchedKey = Object.keys(config.texts).find(
-    key => key.toLowerCase() === text
-  );
+  const text = ctx.message.text.trim();
+  const key = config.buttonToKeyMap[text];
 
-  if (matchedKey) {
+  if (key && config.texts[key]) {
     await sendPhotoOrText(
       ctx,
-      config.images[matchedKey],
-      config.texts[matchedKey],
-      config.inlineButtons[matchedKey] || null
+      config.images[key],
+      config.texts[key],
+      config.inlineButtons[key] || null,
+      config.replyButtons
     );
   } else {
-    await ctx.reply(config.texts.fallback);
+    await ctx.reply(config.texts.fallback, {
+      reply_markup: {
+        keyboard: config.replyButtons.map(row => row.map(btn => ({ text: btn }))),
+        resize_keyboard: true
+      }
+    });
   }
 });
 
@@ -57,6 +61,8 @@ bot.start();
 console.log("🤖 Bot is running...");
 
 app.get("/", (_, res) => res.send("Bot is alive!"));
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`🌐 Web server running`);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`🌐 Web server running on port ${port}`);
 });

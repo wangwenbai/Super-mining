@@ -73,22 +73,26 @@ If you have questions, feel free to ask.
     ],
     joinNow: [
       [
-        { text: "View Plans", url: "https://example.com/plans" }
+        { text: "View Plans", url: "https://example.com/plans" },
+        { text: "FAQ", url: "https://example.com/faq" }
       ]
     ],
     customerSupport: [
       [
-        { text: "Contact Us", url: "https://t.me/your_support_bot" }
+        { text: "Contact Us", url: "https://t.me/your_support_bot" },
+        { text: "Help Center", url: "https://example.com/help" }
       ]
     ],
     howToGetStarted: [
       [
-        { text: "Learn More", url: "https://example.com/how-to" }
+        { text: "Learn More", url: "https://example.com/how-to" },
+        { text: "Tutorial Videos", url: "https://example.com/tutorials" }
       ]
     ],
     learnAboutTheProject: [
       [
-        { text: "More Information", url: "https://example.com/about" }
+        { text: "More Information", url: "https://example.com/about" },
+        { text: "Roadmap", url: "https://example.com/roadmap" }
       ]
     ]
   },
@@ -97,7 +101,6 @@ If you have questions, feel free to ask.
     ["How to get started"],
     ["Learn about the project"]
   ],
-  // 这个映射将用户看到的按钮文本映射到 config 中的 key，确保匹配
   buttonToKeyMap: {
     "Join Now": "joinNow",
     "Customer Support": "customerSupport",

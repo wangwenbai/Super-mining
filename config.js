@@ -5,7 +5,7 @@ module.exports = {
     joinNow: "",
     customerSupport: "",
     howToGetStarted: "",
-    latestOffers: ""
+    learnAboutTheProject: ""
   },
   texts: {
     welcome: `
@@ -53,7 +53,7 @@ Please share your question or issue, and we’ll assist you as soon as possible.
 You can also check the FAQ for quick answers.
 `,
 
-    "How to get started": `
+    howToGetStarted: `
 How to Get Started
 It’s easy to begin:
 
@@ -66,7 +66,7 @@ Start using all features right away
 Need help? Just reply here, and we’ll guide you step by step.
 `,
 
-    "Learn about the project": `
+    learnAboutTheProject: `
 About the Project
 This project provides secure, transparent tools for managing crypto activities.
 
@@ -97,13 +97,13 @@ If you have questions, feel free to ask.
         { text: "Contact Us", url: "" }
       ]
     ],
-    "How to get started": [
+    howToGetStarted: [
       [
         { text: "Contact Us", url: "" },
         { text: "Learn more", url: "" }
       ]
     ],
-    "Learn about the project": [
+    learnAboutTheProject: [
       [
         { text: "More Information", url: "" },
         { text: "Join Now", url: "" }

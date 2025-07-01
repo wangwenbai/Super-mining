@@ -1,10 +1,12 @@
-const config = require("./config");
+require("dotenv").config();
 const { Bot } = require("grammy");
 const express = require("express");
-const app = express();
+const config = require("./config");
 
+const app = express();
 const bot = new Bot(process.env.BOT_TOKEN);
 
+// 统一发送文字或图片
 async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, replyKeyboard = null) {
   const isImageUrl = typeof photoUrl === "string" && photoUrl.match(/^https?:\/\/.*\.(jpg|jpeg|png|webp|gif)$/i);
 
@@ -18,12 +20,13 @@ async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, reply
     await ctx.reply(text, {
       parse_mode: "Markdown",
       reply_markup: replyKeyboard
-        ? { keyboard: replyKeyboard.map(r => r.map(b => ({ text: b }))), resize_keyboard: true }
+        ? { keyboard: replyKeyboard.map(row => row.map(btn => ({ text: btn }))), resize_keyboard: true }
         : inlineKeyboard ? { inline_keyboard: inlineKeyboard } : undefined,
     });
   }
 }
 
+// /start 命令
 bot.command("start", async (ctx) => {
   await sendPhotoOrText(
     ctx,
@@ -34,13 +37,14 @@ bot.command("start", async (ctx) => {
   );
 });
 
+// 监听所有文本消息
 bot.on("message:text", async (ctx) => {
-  const text = ctx.message.text;
+  const text = ctx.message.text.trim();
 
   if (config.texts[text]) {
     await sendPhotoOrText(
       ctx,
-      config.images[text] || "",
+      config.images[text],
       config.texts[text],
       config.inlineButtons[text] || null
     );
@@ -49,8 +53,12 @@ bot.on("message:text", async (ctx) => {
   }
 });
 
+// 启动bot
 bot.start();
-console.log("🤖 Bot is running");
+console.log("🤖 Bot is running...");
 
+// 启动Express服务器
 app.get("/", (_, res) => res.send("Bot is alive!"));
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`🌐 Web server running`);
+});

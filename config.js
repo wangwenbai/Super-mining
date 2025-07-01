@@ -67,31 +67,31 @@ If you have questions, feel free to ask.
   inlineButtons: {
     start: [
       [
-        { text: "Join Now", url: "https://example.com/products" },
+        { text: "Join Now", url: "" },
         { text: "Customer Support", url: "" }  // 第二个按钮预留位置，URL空不显示
       ]
     ],
     joinNow: [
       [
-        { text: "View Plans", url: "https://example.com/plans" },
+        { text: "View Plans", url: "" },
         { text: "More Info", url: "" }          // 第二个按钮空
       ]
     ],
     customerSupport: [
       [
-        { text: "Contact Us", url: "https://t.me/your_support_bot" },
+        { text: "Contact Us", url: "" },
         { text: "FAQ", url: "" }                // 第二个按钮空
       ]
     ],
     howToGetStarted: [
       [
-        { text: "Learn More", url: "https://example.com/how-to" },
+        { text: "Learn More", url: "" },
         { text: "Support", url: "" }            // 第二个按钮空
       ]
     ],
     learnAboutTheProject: [
       [
-        { text: "More Information", url: "https://example.com/about" },
+        { text: "More Information", url: "" },
         { text: "Join Now", url: "" }           // 第二个按钮空
       ]
     ]

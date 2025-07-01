@@ -2,8 +2,8 @@
 module.exports = {
   images: {
     start: "",
-    joinNow: "https://i.imgur.com/yUP6USH.jpeg",
-    customerSupport: "https://i.imgur.com/yUP6USH.jpeg",
+    joinNow: "",
+    customerSupport: "",
     howToGetStarted: "",
     latestOffers: ""
   },
@@ -53,7 +53,7 @@ Please share your question or issue, and we’ll assist you as soon as possible.
 You can also check the FAQ for quick answers.
 `,
 
-    howToGetStartedShort: `
+    "How to get started": `
 How to Get Started
 It’s easy to begin:
 
@@ -66,25 +66,13 @@ Start using all features right away
 Need help? Just reply here, and we’ll guide you step by step.
 `,
 
-    howToGetStartedLong: `
-In order to ensure the asset security and operational freedom of each user, provides a fast and convenient multi-chain USDT withdrawal mechanism, supporting the following three main on-chain methods:
+    "Learn about the project": `
+About the Project
+This project provides secure, transparent tools for managing crypto activities.
 
-💸 Supported withdrawal methods:
-BEP20‑USDT (BNB chain) - A small amount of BNB is required in the wallet as a network fee
-ERC20‑USDT (Ethereum chain) - ETH is required
-Polygon‑USDT (Polygon chain) - POL is required
+You can explore features, check real-time updates, and see how it works before getting started.
 
-🔐 To ensure smooth withdrawal, please prepare enough handling fee tokens for the corresponding chain in advance. This platform does not deduct handling fees.
-
-💡 Withdrawal instructions:
-– Minimum withdrawal amount: 1USDT
-– Only one withdrawal per day
-– The number of withdrawals is reset at 00:00 (Singapore time, GMT+8) every day
-
-✅ Truth and transparency: All withdrawal records can be checked on the chain
-✅ Fast arrival: Automatic processing, completed in 3-9 seconds, and efficient for large amounts
-✅ Global applicability: Supports multiple chains, compatible with mainstream wallets and exchanges
-🎯 Make every asset trustworthy and every withdrawal worth worrying about.
+If you have questions, feel free to ask.
 `,
 
     latestOffers: "This is our website.",
@@ -93,32 +81,32 @@ Polygon‑USDT (Polygon chain) - POL is required
   inlineButtons: {
     start: [
       [
-        { text: "Join Now", url: "https://example.com/products" },
-        { text: "Customer Support", url: "https://lihi3.com/LzrFj" }
+        { text: "Join Now", url: "" },
+        { text: "Customer Support", url: "" }
       ]
     ],
     joinNow: [
       [
-        { text: "Join Now", url: "https://example.com/products" },
-        { text: "Customer Service", url: "https://lihi3.com/LzrFj" }
+        { text: "Join Now", url: "" },
+        { text: "Customer Service", url: "" }
       ]
     ],
     customerSupport: [
       [
-        { text: "Latest Events", url: "https://example.com/pricing" },
-        { text: "Contact Us", url: "https://t.me/your_sales_bot" }
+        { text: "Latest Events", url: "" },
+        { text: "Contact Us", url: "" }
       ]
     ],
-    howToGetStarted: [
+    "How to get started": [
       [
-        { text: "Contact Us", url: "https://t.me/your_support_bot" },
-        { text: "Learn more", url: "https://example.com/faq" }
+        { text: "Contact Us", url: "" },
+        { text: "Learn more", url: "" }
       ]
     ],
-    latestOffers: [
+    "Learn about the project": [
       [
-        { text: "More Information", url: "https://maps.google.com" },
-        { text: "Join Now", url: "https://example.com/hours" }
+        { text: "More Information", url: "" },
+        { text: "Join Now", url: "" }
       ]
     ]
   },

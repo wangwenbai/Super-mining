@@ -7,10 +7,10 @@ const bot = new Bot(process.env.BOT_TOKEN);
 
 const images = {
   start: "",
-  joinNow: "https://i.imgur.com/yUP6USH.jpeg",
-  customerSupport: "https://i.imgur.com/yUP6USH.jpeg",
+  joinNow: "",
+  customerSupport: "",
   howToGetStarted: "",
-  latestOffers: "https://i.imgur.com/2v2mFnt.png"
+  latestOffers: ""
 };
 
 async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, replyKeyboard = null) {

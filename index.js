@@ -6,11 +6,11 @@ const app = express();
 const bot = new Bot(process.env.BOT_TOKEN);
 
 const images = {
-  start: "",
-  joinNow: "",
-  customerSupport: "",
-  howToGetStarted: "",
-  latestOffers: ""
+  start: "https://i.imgur.com/yUP6USH.jpeg",
+  joinNow: "https://i.imgur.com/yUP6USH.jpeg",
+  customerSupport: "https://i.imgur.com/yUP6USH.jpeg",
+  howToGetStarted: "https://i.imgur.com/yUP6USH.jpeg",
+  latestOffers: "https://i.imgur.com/yUP6USH.jpeg"
 };
 
 async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, replyKeyboard = null) {

@@ -8,7 +8,7 @@ module.exports = {
     learnAboutTheProject: ""
   },
   texts: {
-    welcome: `
+    start: `
 Thank you for your interest.
 Here’s what this bot can help you with:
 
@@ -61,7 +61,7 @@ You can explore features, check real-time updates, and see how it works before g
 If you have questions, feel free to ask.
 `,
     fallback: `
-🙏 Thank you for your message. You can contact us by clicking the blue menu button on the far left of the input box. If this is not your target language, please use Telegram translation.
+🙏 Thank you for your message. Please use the menu below or type your query.
 `
   },
   inlineButtons: {
@@ -96,5 +96,12 @@ If you have questions, feel free to ask.
     ["Join Now", "Customer Support"],
     ["How to get started"],
     ["Learn about the project"]
-  ]
+  ],
+  // 这个映射将用户看到的按钮文本映射到 config 中的 key，确保匹配
+  buttonToKeyMap: {
+    "Join Now": "joinNow",
+    "Customer Support": "customerSupport",
+    "How to get started": "howToGetStarted",
+    "Learn about the project": "learnAboutTheProject"
+  }
 };

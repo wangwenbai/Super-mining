@@ -64,19 +64,18 @@ bot.on("message:text", async (ctx) => {
       config.inlineButtons.customerSupport || null
     );
   } else if (text === "How to get started") {
-    const allText = `${config.texts.howToGetStartedShort || ""}\n\n${config.texts.howToGetStartedLong || ""}`;
     await sendPhotoOrText(
       ctx,
       config.images.howToGetStarted || "",
-      allText,
+      config.texts.howToGetStarted || "",
       config.inlineButtons.howToGetStarted || null
     );
-  } else if (text === "Latest Offers") {
+  } else if (text === "Learn about the project") {
     await sendPhotoOrText(
       ctx,
-      config.images.latestOffers || "",
-      config.texts.latestOffers || "",
-      config.inlineButtons.latestOffers || null
+      config.images.learnAboutTheProject || "",
+      config.texts.learnAboutTheProject || "",
+      config.inlineButtons.learnAboutTheProject || null
     );
   } else {
     await ctx.reply(config.texts.fallback || "Thank you for your message.");

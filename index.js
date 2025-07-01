@@ -7,12 +7,14 @@ const app = express();
 const bot = new Bot(process.env.BOT_TOKEN);
 
 async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, replyKeyboard = null) {
-  // 过滤掉 URL 为空的按钮
+  // 过滤掉 URL 为空的按钮，且过滤空行
   const filteredInlineKeyboard = inlineKeyboard
     ? inlineKeyboard
         .map(row => row.filter(button => button.url && button.url.trim() !== ""))
         .filter(row => row.length > 0)
     : null;
+
+  const hasValidInlineButtons = filteredInlineKeyboard && filteredInlineKeyboard.length > 0;
 
   const isImageUrl =
     typeof photoUrl === "string" && photoUrl.match(/^https?:\/\/.*\.(jpg|jpeg|png|webp|gif)$/i);
@@ -21,18 +23,18 @@ async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, reply
     await ctx.replyWithPhoto(photoUrl, {
       caption: text,
       parse_mode: "Markdown",
-      reply_markup: filteredInlineKeyboard ? { inline_keyboard: filteredInlineKeyboard } : undefined,
+      reply_markup: hasValidInlineButtons ? { inline_keyboard: filteredInlineKeyboard } : undefined,
     });
   } else {
     await ctx.reply(text, {
       parse_mode: "Markdown",
       reply_markup: replyKeyboard
         ? {
-            keyboard: replyKeyboard.map(row => row.map(btn => ({ text: btn }))),
+            keyboard: replyKeyboard.map(row => row.map(text => ({ text }))),
             resize_keyboard: true,
             one_time_keyboard: false,
           }
-        : filteredInlineKeyboard
+        : hasValidInlineButtons
         ? { inline_keyboard: filteredInlineKeyboard }
         : undefined,
     });

@@ -15,7 +15,7 @@ function filterInlineButtons(buttonRows) {
   return filtered.length > 0 ? filtered : null;
 }
 
-// 统一发送文本或图片
+// 统一发送文本或图片（智能优先：reply > inline > 无）
 async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, replyKeyboard = null) {
   const isImageUrl =
     typeof photoUrl === "string" &&
@@ -23,20 +23,29 @@ async function sendPhotoOrText(ctx, photoUrl, text, inlineKeyboard = null, reply
 
   const filteredInline = filterInlineButtons(inlineKeyboard);
 
+  // 智能判断优先级
+  let replyMarkup = undefined;
+  if (replyKeyboard && Array.isArray(replyKeyboard) && replyKeyboard.length > 0) {
+    replyMarkup = {
+      keyboard: replyKeyboard.map(row => row.map(text => ({ text }))),
+      resize_keyboard: true,
+    };
+  } else if (filteredInline) {
+    replyMarkup = {
+      inline_keyboard: filteredInline,
+    };
+  }
+
   if (isImageUrl) {
     await ctx.replyWithPhoto(photoUrl, {
       caption: text,
       parse_mode: "Markdown",
-      reply_markup: filteredInline ? { inline_keyboard: filteredInline } : undefined,
+      reply_markup: replyMarkup,
     });
   } else {
     await ctx.reply(text, {
       parse_mode: "Markdown",
-      reply_markup: replyKeyboard
-        ? { keyboard: replyKeyboard.map(row => row.map(btn => ({ text: btn }))), resize_keyboard: true }
-        : filteredInline
-        ? { inline_keyboard: filteredInline }
-        : undefined,
+      reply_markup: replyMarkup,
     });
   }
 }
@@ -63,6 +72,7 @@ bot.on("message:text", async (ctx) => {
       config.images[key],
       config.texts[key],
       config.inlineButtons[key] || null
+      // 不传 replyKeyboard，这样点击快捷按钮会只显示内联按钮
     );
   } else {
     await ctx.reply(config.texts.fallback);
